@@ -1,7 +1,7 @@
 <?php
 /**
  * Application Bootstrap
- * Space of Hope Platform
+ * Hope Space Platform
  */
 
 // Start session
@@ -60,3 +60,41 @@ function url($path) {
     $lang = currentLang();
     return BASE_URL . '/' . ltrim($path, '/') . (strpos($path, '?') !== false ? '&' : '?') . 'lang=' . $lang;
 }
+
+/**
+ * Get site setting
+ */
+function getSetting($key) {
+    static $cache = [];
+    if (!isset($cache[$key])) {
+        try {
+            $db = getDB();
+            $stmt = $db->prepare("SELECT setting_value FROM site_settings WHERE setting_key = ?");
+            $stmt->execute([$key]);
+            $cache[$key] = $stmt->fetchColumn() ?: null;
+        } catch (Exception $e) {
+            $cache[$key] = null;
+        }
+    }
+    return $cache[$key];
+}
+
+/**
+ * Track page visit (non-admin pages only)
+ */
+function trackVisit() {
+    $page = basename($_SERVER['SCRIPT_NAME'], '.php');
+    $adminPages = ['admin', 'admin_resources', 'admin_partners', 'admin_analytics', 'react'];
+    if (in_array($page, $adminPages)) return;
+
+    try {
+        $db = getDB();
+        $ipHash = hash('sha256', ($_SERVER['REMOTE_ADDR'] ?? '') . date('Y-m-d'));
+        $stmt = $db->prepare("INSERT INTO page_visits (page, ip_hash, visited_at) VALUES (?, ?, NOW())");
+        $stmt->execute([$page, $ipHash]);
+    } catch (Exception $e) {
+        // Silently fail if table doesn't exist yet
+    }
+}
+
+trackVisit();

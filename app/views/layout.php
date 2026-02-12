@@ -1,15 +1,15 @@
 <?php
 /**
  * Base Layout Template
- * Wraps all pages with header, footer, disclaimer
+ * Hope Space Platform
  */
 $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
 $switchLang = currentLang() === 'en' ? 'sw' : 'en';
 $switchUrl = strtok($_SERVER['REQUEST_URI'], '?');
-// Preserve existing query params but swap lang
 $params = $_GET;
 $params['lang'] = $switchLang;
 $switchLink = $switchUrl . '?' . http_build_query($params);
+$siteLogo = getSetting('site_logo');
 ?>
 <!DOCTYPE html>
 <html lang="<?= currentLang() ?>">
@@ -19,14 +19,23 @@ $switchLink = $switchUrl . '?' . http_build_query($params);
     <meta name="description" content="<?= e(__('tagline')) ?>">
     <title><?= e($pageTitle ?? __('site_name')) ?> — <?= e(__('site_name')) ?></title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
+    <?php if ($siteLogo): ?>
+        <link rel="icon" href="<?= BASE_URL ?>/assets/uploads/<?= e($siteLogo) ?>" type="image/png">
+    <?php endif; ?>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <a href="<?= url('index.php') ?>" class="logo">
-                <span class="logo-icon">&#127807;</span>
-                <span><?= e(__('site_name')) ?></span>
+                <?php if ($siteLogo): ?>
+                    <img src="<?= BASE_URL ?>/assets/uploads/<?= e($siteLogo) ?>" alt="Hope Space" class="logo-img">
+                <?php else: ?>
+                    <span class="logo-icon">&#127807;</span>
+                <?php endif; ?>
+                <span class="logo-text">
+                    <span class="logo-hope">Hope</span><span class="logo-space">Space</span>
+                </span>
             </a>
 
             <button class="nav-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Menu">
@@ -70,7 +79,12 @@ $switchLink = $switchUrl . '?' . http_build_query($params);
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p><?= __('footer_text') ?></p>
+            <div class="footer-brand">
+                <?php if ($siteLogo): ?>
+                    <img src="<?= BASE_URL ?>/assets/uploads/<?= e($siteLogo) ?>" alt="Hope Space" class="footer-logo">
+                <?php endif; ?>
+                <p><?= __('footer_text') ?></p>
+            </div>
             <p><?= e(__('footer_privacy')) ?></p>
         </div>
     </footer>

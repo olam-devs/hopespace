@@ -144,6 +144,7 @@ ob_start();
             <a href="<?= url('admin.php?action=top_reacted') ?>"><?= e(__('admin_top_reacted')) ?></a>
             <a href="<?= url('admin.php?action=audit') ?>"><?= e(__('admin_audit')) ?></a>
             <hr style="margin: 1rem 0; border-color: var(--border-light);">
+            <a href="<?= url('admin_analytics.php') ?>"><?= e(__('admin_analytics')) ?></a>
             <a href="<?= url('admin_resources.php') ?>" class="active"><?= e(__('admin_resources')) ?></a>
             <a href="<?= url('admin_partners.php') ?>"><?= e(__('admin_partners')) ?></a>
             <hr style="margin: 1rem 0; border-color: var(--border-light);">

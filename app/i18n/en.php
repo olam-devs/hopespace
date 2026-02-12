@@ -161,6 +161,9 @@ return [
     'admin_partner_updated' => 'Partner updated successfully!',
     'admin_partner_deleted' => 'Partner removed successfully.',
 
+    // Admin - Analytics
+    'admin_analytics' => 'Analytics',
+
     // Sorting
     'sort_by' => 'Sort by',
     'sort_recent' => 'Recent',

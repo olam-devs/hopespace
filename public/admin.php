@@ -304,6 +304,7 @@ ob_start();
                 <?= e(__('admin_audit')) ?>
             </a>
             <hr style="margin: 1rem 0; border-color: var(--border-light);">
+            <a href="<?= url('admin_analytics.php') ?>"><?= e(__('admin_analytics')) ?></a>
             <a href="<?= url('admin_resources.php') ?>"><?= e(__('admin_resources')) ?></a>
             <a href="<?= url('admin_partners.php') ?>"><?= e(__('admin_partners')) ?></a>
             <hr style="margin: 1rem 0; border-color: var(--border-light);">

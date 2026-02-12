@@ -161,6 +161,9 @@ return [
     'admin_partner_updated' => 'Mshirika amesasishwa!',
     'admin_partner_deleted' => 'Mshirika ameondolewa.',
 
+    // Admin - Analytics
+    'admin_analytics' => 'Takwimu',
+
     // Sorting
     'sort_by' => 'Panga kwa',
     'sort_recent' => 'Hivi Karibuni',
