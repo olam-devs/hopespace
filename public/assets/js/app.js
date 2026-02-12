@@ -80,7 +80,7 @@ document.querySelectorAll('.reaction-btn').forEach(btn => {
 // --- Share on WhatsApp ---
 function shareWhatsApp(id, btn) {
     const content = btn.dataset.content;
-    const watermark = '\n\n— Hope Space | hopespace.org';
+    const watermark = '\n\n— Hope Space | hopespace.olamtec.co.tz';
     const text = encodeURIComponent(content + watermark);
     window.open('https://wa.me/?text=' + text, '_blank');
 }
@@ -88,7 +88,7 @@ function shareWhatsApp(id, btn) {
 // --- Copy Message ---
 function copyMessage(id, btn) {
     const content = btn.dataset.content;
-    const watermark = '\n\n— Hope Space | hopespace.org';
+    const watermark = '\n\n— Hope Space | hopespace.olamtec.co.tz';
     const text = content + watermark;
 
     navigator.clipboard.writeText(text).then(() => {
