@@ -1,0 +1,294 @@
+Role:
+You are a senior full-stack developer and software architect with expertise in PHP, MySQL, web security, bilingual websites, cloud deployment, and safe mental health platforms.
+
+Goal:
+Design and implement an MVP of a bilingual (Swahili + English), anonymous, moderated hope-message platform for Tanzania. The platform must prioritize safety, ethical content, scalability, and ease of sharing, and be deployable on Evolution Host (cPanel, PHP + MySQL).
+
+1. Core Requirements
+
+Anonymous message submission
+
+No login required
+
+User selects:
+
+Language: Swahili or English
+
+Category: Life, Faith, Education, Family, Finance, Encouragement, Recovery, etc.
+
+Format: Quote / Paragraph / Lesson Learned
+
+Character limits:
+
+Quote: ≤ 200 chars
+
+Paragraph / Lesson: ≤ 600 chars
+
+Submission triggers pending moderation
+
+Moderation workflow
+
+Admin-only dashboard
+
+Actions:
+
+Approve
+
+Edit (lightly, for safety/clarity)
+
+Reject
+
+Status values: pending / approved / rejected
+
+Audit trail of actions
+
+Viewing & filtering
+
+Filter messages by language and category
+
+Default view shows all approved messages
+
+Messages remain in the original language
+
+Reactions
+
+Support-only reactions (no like counts):
+
+“This helped me”
+
+“Gives me hope”
+
+“You are not alone”
+
+No downvotes, no competitive metrics
+
+Sharing
+
+Share message text only
+
+Platform watermark included
+
+Safe for WhatsApp, Instagram Story
+
+No personal data or sensitive metadata
+
+Bilingual UI
+
+Full site translation (UI text, prompts, buttons)
+
+Language switcher always visible
+
+Translation files: en.php and sw.php
+
+Messages remain in original language
+
+Admin panel also bilingual
+
+Support & resource directory
+
+Hospitals, counselors, NGOs
+
+Consultant contacts for emergencies
+
+Static, verified, clearly labeled
+
+Disclaimer: platform is not a replacement for professional care
+
+2. Technical Stack & Architecture
+
+Backend: PHP (Laravel recommended) or Vanilla PHP
+
+Database: MySQL
+
+Hosting: Evolution Host (cPanel, PHP 8+, MySQL)
+
+Frontend: HTML/CSS/JS (or Blade Templates if Laravel)
+
+Security:
+
+XSS protection
+
+CSRF protection
+
+HTTPS only
+
+Prepared statements (PDO recommended)
+
+Folder structure recommendation (Laravel style)
+
+/public
+  ├─ index.php
+  ├─ submit.php
+  ├─ messages.php
+  ├─ admin.php
+  └─ assets/
+
+/app
+  ├─ config/
+  ├─ controllers/
+  ├─ models/
+  ├─ middleware/
+  ├─ i18n/
+  └─ views/
+
+/storage
+  ├─ logs
+  └─ uploads
+
+3. Database Schema
+
+messages
+
+id (UUID or BIGINT)
+language ENUM('sw','en')
+category JSON
+format ENUM('quote','paragraph','lesson')
+content TEXT
+status ENUM('pending','approved','rejected')
+created_at DATETIME
+published_at DATETIME
+
+
+reactions
+
+id
+message_id
+type ENUM('helped','hope','prayer')
+created_at
+
+
+admins
+
+id
+email
+password_hash
+role
+created_at
+
+4. Admin Panel Features
+
+View pending messages
+
+Approve / edit / reject messages
+
+Filter by language, category
+
+Search messages
+
+View reaction summary (optional)
+
+Maintain resource directory
+
+Add new admins and manage roles
+
+Audit trail for moderation actions
+
+5. UX/UI Guidelines
+
+Calm, minimal design
+
+Avoid social-media “pressure” metrics
+
+Clear prompts for safe writing:
+
+“Write something that may help someone keep going today.”
+
+“Share hope, lessons learned, or encouragement, not details of harm.”
+
+Always show:
+
+Language switcher
+
+Disclaimer & support links
+
+Mobile-first design
+
+Fast loading on low bandwidth
+
+6. Internationalization (i18n)
+
+Separate translation files for UI:
+
+/app/i18n/en.php
+
+/app/i18n/sw.php
+
+Site remembers user language choice
+
+Messages remain in original language
+
+Future-proof for adding more languages
+
+Admin panel also supports language switching
+
+7. Safety & Compliance
+
+All messages reviewed before publishing
+
+No graphic content allowed
+
+No detailed self-harm instructions
+
+Clear guidance and disclaimers
+
+Crisis support links always visible
+
+Respect user anonymity fully
+
+8. MVP Scope
+
+Anonymous message submission
+
+Admin moderation
+
+Viewing messages by language & category
+
+Support reactions
+
+Safe sharing
+
+Bilingual UI
+
+Static resource directory
+
+9. Out of Scope (for MVP)
+
+Real-time chat
+
+Direct messaging
+
+Auto AI translations (for MVP)
+
+User accounts
+
+Popularity metrics
+
+Advanced analytics
+
+10. Future Scalability (Optional Later)
+
+AI-assisted moderation (human-in-loop)
+
+Mobile app / PWA
+
+Additional East African languages
+
+Multi-region deployment
+
+Aggregated, anonymized data for research or insights
+
+Partnerships with NGOs, hospitals, and schools
+
+11. Deployment Instructions (Cloud/Hosting Ready)
+
+Upload PHP code to Evolution Host via cPanel
+
+Set up MySQL database
+
+Configure database connection in Laravel .env or PHP config
+
+Enable HTTPS (SSL certificate)
+
+Set folder permissions for logs and uploads
+
+Optional: set up cron job for automated admin notifications

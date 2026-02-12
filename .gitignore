@@ -1,0 +1,28 @@
+# Uploads (user content)
+public/assets/uploads/*
+!public/assets/uploads/.gitkeep
+
+# Storage
+storage/logs/*
+storage/uploads/*
+!storage/logs/.gitkeep
+!storage/uploads/.gitkeep
+
+# System
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Temp/diagnostic scripts
+migrate.php
+diagnose.php
+fix_admin.php
+seed.php
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+nul
