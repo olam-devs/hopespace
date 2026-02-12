@@ -194,6 +194,12 @@ main {
     border-color: var(--primary);
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 /* Mobile nav toggle */
 .nav-toggle {
     display: none;
@@ -992,6 +998,15 @@ select.form-control {
 
     .nav-toggle {
         display: block;
+    }
+
+    .lang-switch {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.8rem;
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+        border-radius: var(--radius);
     }
 
     .hero h1 {

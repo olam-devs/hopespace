@@ -38,9 +38,12 @@ $siteLogo = getSetting('site_logo');
                 </span>
             </a>
 
-            <button class="nav-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Menu">
-                &#9776;
-            </button>
+            <div class="header-actions">
+                <a href="<?= e($switchLink) ?>" class="lang-switch"><?= e(__('switch_lang')) ?></a>
+                <button class="nav-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Menu">
+                    &#9776;
+                </button>
+            </div>
 
             <nav class="nav">
                 <a href="<?= url('index.php') ?>" class="<?= $currentPage === 'index' ? 'active' : '' ?>"><?= e(__('home')) ?></a>
@@ -48,7 +51,6 @@ $siteLogo = getSetting('site_logo');
                 <a href="<?= url('submit.php') ?>" class="<?= $currentPage === 'submit' ? 'active' : '' ?>"><?= e(__('submit')) ?></a>
                 <a href="<?= url('resources.php') ?>" class="<?= $currentPage === 'resources' ? 'active' : '' ?>"><?= e(__('resources')) ?></a>
                 <a href="<?= url('partners.php') ?>" class="<?= $currentPage === 'partners' ? 'active' : '' ?>"><?= e(__('partners')) ?></a>
-                <a href="<?= e($switchLink) ?>" class="lang-switch"><?= e(__('switch_lang')) ?></a>
             </nav>
         </div>
     </header>
