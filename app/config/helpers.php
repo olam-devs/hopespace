@@ -78,5 +78,12 @@ function requireAdmin(): void {
  * Get list of categories
  */
 function getCategories(): array {
-    return ['life', 'faith', 'education', 'family', 'finance', 'encouragement', 'recovery', 'marriage', 'mental_health'];
+    return ['life', 'faith', 'education', 'finance', 'encouragement', 'marriage', 'mental_health', 'love', 'investment_tips'];
+}
+
+/**
+ * Get list of message formats
+ */
+function getFormats(): array {
+    return ['quote', 'paragraph', 'lesson', 'question'];
 }

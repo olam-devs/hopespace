@@ -116,6 +116,40 @@ function copyMessage(id, btn) {
     });
 }
 
+// --- Toggle Comments Section ---
+function toggleComments(msgId) {
+    const section = document.getElementById('comments-' + msgId);
+    if (section) {
+        section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+// --- See More / Hide Comments ---
+function toggleMoreComments(msgId, btn) {
+    const list = document.getElementById('comments-list-' + msgId);
+    if (!list) return;
+    const hidden = list.querySelectorAll('.comment-hidden');
+    const isShowing = btn.dataset.expanded === 'true';
+
+    hidden.forEach(el => {
+        el.style.display = isShowing ? 'none' : 'block';
+    });
+
+    btn.dataset.expanded = isShowing ? 'false' : 'true';
+    btn.textContent = isShowing ? btn.dataset.showText : btn.dataset.hideText;
+}
+
+// --- Question Format Hint Toggle ---
+const questionHint = document.getElementById('questionHint');
+const formatEl = document.getElementById('format');
+if (formatEl && questionHint) {
+    function updateQuestionHint() {
+        questionHint.style.display = formatEl.value === 'question' ? 'block' : 'none';
+    }
+    formatEl.addEventListener('change', updateQuestionHint);
+    updateQuestionHint();
+}
+
 // --- Character Counter for Submit Form ---
 const formatSelect = document.getElementById('format');
 const contentArea = document.getElementById('content');

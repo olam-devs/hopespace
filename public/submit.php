@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'Invalid category.';
     }
 
-    if (!in_array($format, ['quote', 'paragraph', 'lesson'])) {
+    if (!in_array($format, getFormats())) {
         $errors[] = 'Invalid format.';
     }
 
@@ -96,7 +96,11 @@ ob_start();
                     <option value="quote" <?= ($_POST['format'] ?? '') === 'quote' ? 'selected' : '' ?>><?= e(__('format_quote')) ?> (≤ 200)</option>
                     <option value="paragraph" <?= ($_POST['format'] ?? '') === 'paragraph' ? 'selected' : '' ?>><?= e(__('format_paragraph')) ?> (≤ 600)</option>
                     <option value="lesson" <?= ($_POST['format'] ?? '') === 'lesson' ? 'selected' : '' ?>><?= e(__('format_lesson')) ?> (≤ 600)</option>
+                    <option value="question" <?= ($_POST['format'] ?? '') === 'question' ? 'selected' : '' ?>><?= e(__('format_question')) ?> (≤ 600)</option>
                 </select>
+                <p id="questionHint" class="form-hint" style="display:none; margin-top: 0.5rem; color: #92400e; background: #fffbeb; padding: 8px 12px; border-radius: 6px;">
+                    <?= e(__('question_invite')) ?>
+                </p>
             </div>
 
             <div class="form-group">

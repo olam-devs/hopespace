@@ -39,17 +39,18 @@ return [
     'cat_life' => 'Life',
     'cat_faith' => 'Faith',
     'cat_education' => 'Education',
-    'cat_family' => 'Family',
     'cat_finance' => 'Finance',
     'cat_encouragement' => 'Encouragement',
-    'cat_recovery' => 'Recovery',
     'cat_marriage' => 'Marriage',
     'cat_mental_health' => 'Mental Health',
+    'cat_love' => 'Love',
+    'cat_investment_tips' => 'Investment Tips',
 
     // Formats
     'format_quote' => 'Quote',
     'format_paragraph' => 'Paragraph',
     'format_lesson' => 'Lesson Learned',
+    'format_question' => 'Question',
 
     // Languages
     'lang_en' => 'English',
@@ -181,6 +182,27 @@ return [
 
     // Disclaimer
     'disclaimer' => 'This platform provides peer encouragement only and is not a substitute for professional mental health support.',
+
+    // Anonymous Comments
+    'question_invite' => 'This is a question. Share your thoughts anonymously below.',
+    'write_comment' => 'Share your anonymous response...',
+    'comment_submitted' => 'Your comment has been submitted for review.',
+    'see_more_comments' => 'See more comments',
+    'hide_comments' => 'Hide comments',
+    'no_comments_yet' => 'No comments yet. Be the first to share your thoughts!',
+    'comments_label' => 'comments',
+    'post_comment' => 'Post Comment',
+    'pending_review' => 'Pending Review',
+
+    // Admin - Comments
+    'admin_comments' => 'Manage Comments',
+    'admin_approve_selected' => 'Approve Selected',
+    'admin_reject_selected' => 'Reject Selected',
+    'admin_delete_selected' => 'Delete Selected',
+    'admin_select_all' => 'Select All',
+    'admin_no_pending_comments' => 'No pending comments to review.',
+    'admin_view_comments' => 'View Comments',
+    'admin_manage_post_comments' => 'Manage Comments for Post',
 
     // Footer
     'footer_text' => '&copy; ' . date('Y') . ' Hope Space. All messages are anonymous.',

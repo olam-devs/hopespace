@@ -19,10 +19,34 @@ migrate.php
 diagnose.php
 fix_admin.php
 seed.php
+public/test_connection.php
+public/test_debug.php
 
 # IDE
 .vscode/
 .idea/
+
+# Claude Code
+.claude/
+
+# Local notes
+*.txt
+MODULE1_README.md
+
+# Phase 2 (not yet integrated)
+public/admin/
+public/login.php
+public/register.php
+public/profile.php
+public/edit_profile.php
+public/users.php
+public/submit_message.php
+public/api/
+app/middleware/
+app/models/
+app/config/security.php
+app/config/i18n.php
+database/phase2_module1_migration.sql
 
 # OS
 nul
