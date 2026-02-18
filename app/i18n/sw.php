@@ -183,26 +183,26 @@ return [
     // Disclaimer
     'disclaimer' => 'Jukwaa hili linatoa moyo wa rika tu na si mbadala wa msaada wa kitaalamu wa afya ya akili.',
 
-    // Anonymous Comments
+    // Anonymous Responses (for questions)
     'question_invite' => 'Hili ni swali. Shiriki mawazo yako bila kujulikana hapa chini.',
     'write_comment' => 'Shiriki majibu yako bila kujulikana...',
-    'comment_submitted' => 'Maoni yako yametumwa kwa ukaguzi.',
-    'see_more_comments' => 'Tazama maoni zaidi',
-    'hide_comments' => 'Ficha maoni',
-    'no_comments_yet' => 'Hakuna maoni bado. Kuwa wa kwanza kushiriki mawazo yako!',
-    'comments_label' => 'maoni',
-    'post_comment' => 'Tuma Maoni',
+    'comment_submitted' => 'Jibu lako limetumwa kwa ukaguzi.',
+    'see_more_comments' => 'Tazama majibu zaidi',
+    'hide_comments' => 'Ficha majibu',
+    'no_comments_yet' => 'Hakuna majibu bado. Kuwa wa kwanza kushiriki mawazo yako!',
+    'comments_label' => 'Majibu',
+    'post_comment' => 'Tuma Jibu',
     'pending_review' => 'Inasubiri Ukaguzi',
 
-    // Admin - Comments
-    'admin_comments' => 'Simamia Maoni',
+    // Admin - Responses
+    'admin_comments' => 'Simamia Majibu',
     'admin_approve_selected' => 'Kubali Zilizochaguliwa',
     'admin_reject_selected' => 'Kataa Zilizochaguliwa',
     'admin_delete_selected' => 'Futa Zilizochaguliwa',
     'admin_select_all' => 'Chagua Zote',
-    'admin_no_pending_comments' => 'Hakuna maoni yanayosubiri ukaguzi.',
-    'admin_view_comments' => 'Tazama Maoni',
-    'admin_manage_post_comments' => 'Simamia Maoni ya Chapisho',
+    'admin_no_pending_comments' => 'Hakuna majibu yanayosubiri ukaguzi.',
+    'admin_view_comments' => 'Tazama Majibu',
+    'admin_manage_post_comments' => 'Simamia Majibu ya Chapisho',
 
     // Footer
     'footer_text' => '&copy; ' . date('Y') . ' Hope Space. Ujumbe wote ni wa siri.',
