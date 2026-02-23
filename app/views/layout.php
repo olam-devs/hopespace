@@ -48,9 +48,12 @@ $siteLogo = getSetting('site_logo');
             <nav class="nav">
                 <a href="<?= url('index.php') ?>" class="<?= $currentPage === 'index' ? 'active' : '' ?>"><?= e(__('home')) ?></a>
                 <a href="<?= url('messages.php') ?>" class="<?= $currentPage === 'messages' ? 'active' : '' ?>"><?= e(__('messages')) ?></a>
+                <a href="<?= url('stories.php') ?>" class="<?= $currentPage === 'stories' ? 'active' : '' ?>"><?= e(__('stories')) ?></a>
+                <a href="<?= url('testimonies.php') ?>" class="<?= $currentPage === 'testimonies' ? 'active' : '' ?>"><?= e(__('testimonies')) ?></a>
                 <a href="<?= url('submit.php') ?>" class="<?= $currentPage === 'submit' ? 'active' : '' ?>"><?= e(__('submit')) ?></a>
                 <a href="<?= url('resources.php') ?>" class="<?= $currentPage === 'resources' ? 'active' : '' ?>"><?= e(__('resources')) ?></a>
                 <a href="<?= url('partners.php') ?>" class="<?= $currentPage === 'partners' ? 'active' : '' ?>"><?= e(__('partners')) ?></a>
+                <a href="<?= url('author/dashboard.php') ?>" class="nav-author-link <?= in_array($currentPage, ['dashboard', 'create_story', 'write_part', 'preview']) ? 'active' : '' ?>"><?= e(__('author_portal')) ?></a>
             </nav>
         </div>
     </header>
@@ -91,6 +94,6 @@ $siteLogo = getSetting('site_logo');
         </div>
     </footer>
 
-    <script src="<?= BASE_URL ?>/assets/js/app.js?v=2"></script>
+    <script src="<?= BASE_URL ?>/assets/js/app.js?v=3"></script>
 </body>
 </html>

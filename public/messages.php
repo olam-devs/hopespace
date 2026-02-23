@@ -57,6 +57,7 @@ $isAjax = !empty($_GET['ajax']);
 // Filter parameters
 $filterLang = $_GET['filter_lang'] ?? '';
 $filterCat = $_GET['filter_cat'] ?? '';
+$filterFormat = $_GET['filter_format'] ?? '';
 $sortBy = $_GET['sort'] ?? 'recent';
 $search = trim($_GET['search'] ?? '');
 $page = max(1, (int)($_GET['page'] ?? 1));
@@ -81,6 +82,11 @@ if ($filterLang && in_array($filterLang, ['en', 'sw'])) {
 if ($filterCat && in_array($filterCat, getCategories())) {
     $where[] = "m.category = ?";
     $params[] = $filterCat;
+}
+
+if ($filterFormat && in_array($filterFormat, getFormats())) {
+    $where[] = "m.format = ?";
+    $params[] = $filterFormat;
 }
 
 if ($search !== '') {
@@ -259,6 +265,13 @@ ob_start();
             <option value=""><?= e(__('filter_category')) ?>: <?= e(__('filter_all')) ?></option>
             <?php foreach (getCategories() as $cat): ?>
                 <option value="<?= $cat ?>" <?= $filterCat === $cat ? 'selected' : '' ?>><?= e(__('cat_' . $cat)) ?></option>
+            <?php endforeach; ?>
+        </select>
+
+        <select name="filter_format" onchange="this.form.submit()">
+            <option value=""><?= e(__('filter_format')) ?>: <?= e(__('filter_all')) ?></option>
+            <?php foreach (getFormats() as $fmt): ?>
+                <option value="<?= $fmt ?>" <?= $filterFormat === $fmt ? 'selected' : '' ?>><?= e(__('format_' . $fmt)) ?></option>
             <?php endforeach; ?>
         </select>
 
