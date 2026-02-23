@@ -56,6 +56,7 @@ INSERT IGNORE INTO `admins` (`email`, `password_hash`, `role`) VALUES
 -- ============================================================
 -- 4. AUDIT LOG
 -- (Updated schema: nullable message_id, comment_id col, extended action enum)
+-- FK to anonymous_comments is safe here because FOREIGN_KEY_CHECKS=0
 -- ============================================================
 CREATE TABLE IF NOT EXISTS `audit_log` (
     `id`         BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -65,8 +66,9 @@ CREATE TABLE IF NOT EXISTS `audit_log` (
     `action`     ENUM('approved','edited','rejected','comment_approved','comment_rejected','comment_edited','comment_deleted') NOT NULL,
     `details`    TEXT NULL,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (`admin_id`)   REFERENCES `admins`(`id`)   ON DELETE CASCADE,
-    FOREIGN KEY (`message_id`) REFERENCES `messages`(`id`) ON DELETE CASCADE
+    FOREIGN KEY (`admin_id`)   REFERENCES `admins`(`id`)            ON DELETE CASCADE,
+    FOREIGN KEY (`message_id`) REFERENCES `messages`(`id`)          ON DELETE CASCADE,
+    FOREIGN KEY (`comment_id`) REFERENCES `anonymous_comments`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
@@ -203,12 +205,6 @@ CREATE TABLE IF NOT EXISTS `anonymous_comments` (
     INDEX idx_status  (`status`),
     INDEX idx_created (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Wire up audit_log.comment_id FK now that anonymous_comments exists
--- (safe on fresh install; use ADD CONSTRAINT IF NOT EXISTS on upgrade)
-ALTER TABLE `audit_log`
-ADD CONSTRAINT IF NOT EXISTS `fk_audit_log_comment_id`
-FOREIGN KEY (`comment_id`) REFERENCES `anonymous_comments`(`id`) ON DELETE SET NULL;
 
 -- ============================================================
 -- 8. TESTIMONIES
