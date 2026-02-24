@@ -667,7 +667,7 @@ INSERT IGNORE INTO `story_parts` (`story_id`, `part_number`, `content`, `status`
 
 <p>Kazi ile ya tano ndiyo ilimjibu baada ya siku tatu.</p>
 
-<p>Miaka miwili baadaye, Neema alisimulia hadithi hii katika kikao cha msaada wa wasichana wa chuo kikuu, akisema: usidharau mwanga mdogo. Ukiwa katika giza totoro, hata kitu kidogo kinachong'aa kinatosha kukuonyesha njia ya hatua moja tu mbele. Na hatua moja ndio unachohitaji.</p>
+<p>Miaka miwili baadaye, Neema alisimulia hadithi hii katika kikao cha msaada wa wasichana wa chuo kikuu, akisema: usidharau mwanga mdogo. Ukiwa katika giza totoro, hata kitu kidogo kinachong''aa kinatosha kukuonyesha njia ya hatua moja tu mbele. Na hatua moja ndio unachohitaji.</p>
 
 <p><em>Imeandikwa na HopeSpace Admin.</em></p>',
     'approved', 1, NOW()
