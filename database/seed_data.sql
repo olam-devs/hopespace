@@ -411,7 +411,7 @@ INSERT IGNORE INTO `stories` (
     'the-last-call',
     'en',
     'On a Tuesday night in Dar es Salaam, a tired taxi driver receives a passenger who changes the course of his entire life  and whose life he unknowingly saves. A story about what can happen in an ordinary hour when one person chooses to be present.',
-    'full', 'approved', 1, NOW(), NOW()
+    'full', 'approved', 1, '2025-01-05 09:00:00', '2025-01-05 09:00:00'
 );
 
 SET @s1 = (SELECT `id` FROM `stories` WHERE `slug` = 'the-last-call' LIMIT 1);
@@ -482,7 +482,7 @@ INSERT IGNORE INTO `stories` (
     'mwisho-wa-barabara',
     'sw',
     'Baada ya miaka kumi na mbili nje ya nchi, Grace anarudi Tanzania akiwa amechoka, amefilisika na akijisikia kama mgeni katika nchi yake mwenyewe. Lakini siku ya kwanza nyumbani inamfundisha kitu ambacho safari yake yote haikuweza kumfundisha.',
-    'full', 'approved', 1, NOW(), NOW()
+    'full', 'approved', 1, '2025-01-12 10:00:00', '2025-01-12 10:00:00'
 );
 
 SET @s2 = (SELECT `id` FROM `stories` WHERE `slug` = 'mwisho-wa-barabara' LIMIT 1);
@@ -614,7 +614,7 @@ INSERT IGNORE INTO `stories` (
     'mwanga-wa-taa-moja',
     'sw',
     'Neema ana miaka ishirini na saba. Ana shahada, ana dhamira. Lakini hakuna kazi, baba yake mgonjwa, na familia inategemea yeye peke yake. Usiku anapoamua kukata tamaa, msichana mdogo jirani yake anamfundisha somo ambalo amekuwa akisahau.',
-    'full', 'approved', 1, NOW(), NOW()
+    'full', 'approved', 1, '2025-01-28 09:30:00', '2025-01-28 09:30:00'
 );
 
 SET @s4 = (SELECT `id` FROM `stories` WHERE `slug` = 'mwanga-wa-taa-moja' LIMIT 1);
@@ -686,7 +686,7 @@ INSERT IGNORE INTO `stories` (
     'everything-after-tuesday',
     'en',
     'Amara and David met at a coffee shop during a power cut, argued over one candle, and went their separate ways — convinced they would never see each other again. Three years later, life brings them back to the same table. A slow, warm story about timing, second chances, and the kind of love that waits.',
-    'full', 'approved', 1, NOW(), NOW()
+    'full', 'approved', 1, '2025-02-08 11:00:00', '2025-02-08 11:00:00'
 );
 
 SET @s5 = (SELECT `id` FROM `stories` WHERE `slug` = 'everything-after-tuesday' LIMIT 1);

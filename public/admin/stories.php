@@ -54,6 +54,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirect(BASE_URL . '/admin/stories.php?tab=stories');
     }
 
+    // Admin: Delete story entirely
+    if ($action === 'delete_story' && !empty($_POST['story_id'])) {
+        $storyId = (int)$_POST['story_id'];
+        $db->prepare("DELETE FROM story_parts WHERE story_id = ?")->execute([$storyId]);
+        $db->prepare("DELETE FROM stories WHERE id = ?")->execute([$storyId]);
+        $db->prepare("INSERT INTO audit_log (admin_id, message_id, action, details, created_at) VALUES (?, 0, ?, ?, NOW())")
+           ->execute([$_SESSION['admin_id'], 'deleted', 'Story ' . $storyId . ' and all parts deleted by admin']);
+        setFlash('success', 'Story deleted permanently.');
+        redirect(BASE_URL . '/admin/stories.php?tab=stories');
+    }
+
+    // Admin: Delete single story part
+    if ($action === 'delete_part' && !empty($_POST['part_id'])) {
+        $partId = (int)$_POST['part_id'];
+        $db->prepare("DELETE FROM story_parts WHERE id = ?")->execute([$partId]);
+        $db->prepare("INSERT INTO audit_log (admin_id, message_id, action, details, created_at) VALUES (?, 0, ?, ?, NOW())")
+           ->execute([$_SESSION['admin_id'], 'deleted', 'Story part ' . $partId . ' deleted by admin']);
+        setFlash('success', 'Part deleted.');
+        redirect(BASE_URL . '/admin/stories.php?tab=parts');
+    }
+
     // Testimony moderation
     if (in_array($action, ['approve_testimony', 'reject_testimony']) && !empty($_POST['testimony_id'])) {
         $tId       = (int)$_POST['testimony_id'];
@@ -242,6 +263,11 @@ if ($tab === 'parts') {
                             <input type="hidden" name="part_id" value="<?= $part['id'] ?>">
                             <button type="submit" name="action" value="reject_part" class="btn btn-sm" style="background:var(--danger);color:#fff;">&#10007; Reject</button>
                         </form>
+                        <form method="POST" onsubmit="return confirm('Permanently delete this story part?')">
+                            <?= csrfField() ?>
+                            <input type="hidden" name="part_id" value="<?= $part['id'] ?>">
+                            <button type="submit" name="action" value="delete_part" class="btn btn-sm" style="background:#6b0f1a;color:#fff;">&#128465; Delete Part</button>
+                        </form>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -277,6 +303,11 @@ if ($tab === 'parts') {
                         <?php if ($story['status'] === 'approved'): ?>
                             <a href="<?= BASE_URL ?>/story.php?slug=<?= urlencode($story['slug']) ?>" target="_blank" class="btn btn-secondary btn-sm">&#128279; View Live</a>
                         <?php endif; ?>
+                        <form method="POST" onsubmit="return confirm('Permanently delete this story and ALL its parts?')">
+                            <?= csrfField() ?>
+                            <input type="hidden" name="story_id" value="<?= $story['id'] ?>">
+                            <button type="submit" name="action" value="delete_story" class="btn btn-sm" style="background:#6b0f1a;color:#fff;">&#128465; Delete</button>
+                        </form>
                     </div>
                 </div>
             <?php endforeach; ?>

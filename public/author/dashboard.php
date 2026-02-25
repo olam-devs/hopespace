@@ -131,6 +131,17 @@ ob_start();
                                     <a href="<?= url('author/write_part.php?story_id=' . $story['id']) ?>"
                                        class="btn btn-primary btn-sm">&#9997; Write Story</a>
                                 <?php endif; ?>
+                                <!-- Edit & Delete -->
+                                <a href="<?= url('author/edit_story.php?story_id=' . $story['id']) ?>"
+                                   class="btn btn-secondary btn-sm">&#9998; Edit</a>
+                                <form method="POST" action="<?= url('author/edit_story.php?story_id=' . $story['id']) ?>"
+                                      style="display:inline;"
+                                      onsubmit="return confirm('Delete story &quot;<?= addslashes(e($story['title'])) ?>&quot;?\n\nAll parts will be permanently deleted. This cannot be undone.')">
+                                    <?= csrfField() ?>
+                                    <input type="hidden" name="action" value="delete">
+                                    <button type="submit" class="btn btn-sm"
+                                            style="background:var(--danger,#dc3545);color:#fff;border-color:var(--danger,#dc3545);">&#128465; Delete</button>
+                                </form>
                             </div>
                         </div>
 
